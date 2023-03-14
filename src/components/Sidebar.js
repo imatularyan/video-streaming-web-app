@@ -7,7 +7,7 @@ const Sidebar = () => {
   if (!isMenuOpen) return null;
 
   return (
-    <div className=" w-1/6 h-screen text-center px-3 overflow-scroll mt-2 text-sm font-medium">
+    <div className="w-1/6 h-screen text-center p3 overflow-scroll mt-2 text-sm font-medium">
       <h1 className="active:font-medium hover:bg-gray-100 p-2 rounded-lg cursor-pointer">
         Home
       </h1>
