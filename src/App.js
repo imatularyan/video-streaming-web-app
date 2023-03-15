@@ -10,10 +10,8 @@ import WatchPage from "./components/WatchPage";
 function App() {
   return (
     <Provider store={store}>
-      <div className=" bg-blend-soft-light">
-        <Header />
-        <RouterProvider router={appRouter} />
-      </div>
+      <Header />
+      <RouterProvider router={appRouter} />
     </Provider>
   );
 }

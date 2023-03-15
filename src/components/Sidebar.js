@@ -10,9 +10,11 @@ const Sidebar = () => {
   return (
     <div className=" flex-none min-w-max flex-col h-screen text-center p-5 text-base font-light font-sans overflow-auto">
       <div className=" w-52">
-        <h1 className="active:font-medium hover:bg-gray-300 p-2 rounded-lg cursor-pointer font-medium bg-gray-200">
-          <Link to="/">Home</Link>
-        </h1>
+        <Link to="/">
+          <h1 className="active:font-medium hover:bg-gray-300 p-2 rounded-lg cursor-pointer font-medium bg-gray-200">
+            Home
+          </h1>
+        </Link>
         <h1 className="active:font-medium hover:bg-gray-100 p-2 rounded-lg cursor-pointer">
           Shorts
         </h1>
