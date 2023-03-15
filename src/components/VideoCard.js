@@ -8,7 +8,7 @@ const VideoCard = ({ info }) => {
   const { viewCount } = statistics;
 
   return (
-    <div className=" w-80 h-fit mb-4">
+    <div className=" w-80 h-fit my-3">
       <div className="w-full h-44">
         <img
           className=" w-full h-full rounded-xl object-cover"

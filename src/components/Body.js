@@ -4,7 +4,7 @@ import Sidebar from "./Sidebar";
 
 const Body = () => {
   return (
-    <div className="flex">
+    <div className="flex justify-evenly">
       <Sidebar />
       <Outlet />
     </div>

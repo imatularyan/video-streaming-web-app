@@ -1,6 +1,6 @@
 import React from "react";
 import Logo from "../assets/Logo.webp";
-import Hamburger from "../assets/hamburger.svg";
+import toogleicon from "../assets/hamburger.svg";
 import searchIcon from "../assets/searchIcon.svg";
 import userIcon from "../assets/userIcon.svg";
 import { useDispatch } from "react-redux";
@@ -8,6 +8,7 @@ import { toggleMenu } from "../utils/appSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
+
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
   };
@@ -16,14 +17,14 @@ const Header = () => {
     <div className="flex gap-7 p-2 items-center px-6">
       <div className=" w-5 cursor-pointer">
         <img
-          src={Hamburger}
-          alt="Hamburger"
+          src={toogleicon}
+          alt="toggleicon"
           onClick={() => toggleMenuHandler()}
         />
       </div>
       <div className=" w-24 cursor-pointer">
         <img src={Logo} alt="logo" />
-      </div>
+      </div>{" "}
       <div className="flex border-zinc-300 shadow-inner border m-auto rounded-full  w-2/6">
         <input
           type="text"

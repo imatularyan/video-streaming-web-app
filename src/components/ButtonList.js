@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "./Button";
 
 const list = [
   "All",
@@ -22,19 +21,17 @@ const list = [
 
 const ButtonList = () => {
   return (
-    <div className="flex w-11/12 overflow-clip overflow-x-auto overscroll-none">
-      {/* <button className=" hover:bg-gray-100 p-2 rounded-full cursor-pointer">
-          ←
-        </button> */}
-      {list.map((name, index) => (
-        <Button key={index} name={name} />
-      ))}
-      <div>
-        <button className="hover:bg-gray-100 p-2 rounded-full cursor-pointer">
-          {" "}
-          →
-        </button>
-      </div>
+    <div>
+      <ul className="flex flex-wrap min-w-min my-3 gap-2 cursor-pointer overflow-x-scroll scroll whitespace-nowrap scroll-smooth">
+        {list.map((name, index) => (
+          <li
+            key={index}
+            className=" px-3 py-2 bg-gray-200 rounded-md font-medium text-sm hover:bg-gray-300 h-min"
+          >
+            {name}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
