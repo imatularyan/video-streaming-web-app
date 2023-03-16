@@ -16,7 +16,7 @@ const WatchPage = () => {
 
   return (
     <div className="flex flex-col mr-auto">
-      <div className="px-5">
+      <div className="px-5 h-full pt-5 pb-40 bg-black bg-blend-luminosity">
         <iframe
           width="1200"
           height="600"
