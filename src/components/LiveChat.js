@@ -23,8 +23,7 @@ const LiveChat = () => {
     }, 2000);
 
     return () => clearInterval(i);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

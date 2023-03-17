@@ -175,6 +175,25 @@ var nameList = [
   "Paradox",
 ];
 
+export const list = [
+  "All",
+  "Music",
+  "Kapil Sharma",
+  "Gaming",
+  "Mixes",
+  "Chill-out music",
+  "Dramedy",
+  "Instrumentals",
+  "Healing Prayers",
+  "JavaScript",
+  "Universe",
+  "Computers",
+  "Comedy Clubs",
+  "Comedy Clubs",
+  "Comedy Clubs",
+  "Comedy Clubs",
+];
+
 export function generateRandomName() {
   return nameList[Math.floor(Math.random() * nameList.length)];
 }

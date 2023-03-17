@@ -38,6 +38,11 @@ const Sidebar = () => {
           <li className="active:font-medium hover:bg-gray-100 p-2 rounded-lg cursor-pointer">
             Watch Later
           </li>
+          <Link to="demo">
+            <li className="active:font-medium hover:bg-gray-100 p-2 rounded-lg cursor-pointer">
+              Watch Later
+            </li>
+          </Link>
         </ul>
         <hr className=" m-2"></hr>
       </div>

@@ -1,23 +1,5 @@
 import React from "react";
-
-const list = [
-  "All",
-  "Music",
-  "Kapil Sharma",
-  "Gaming",
-  "Mixes",
-  "Chill-out music",
-  "Dramedy",
-  "Instrumentals",
-  "Healing Prayers",
-  "JavaScript",
-  "Universe",
-  "Computers",
-  "Comedy Clubs",
-  "Comedy Clubs",
-  "Comedy Clubs",
-  "Comedy Clubs",
-];
+import { list } from "../utils/helper";
 
 const ButtonList = () => {
   return (
