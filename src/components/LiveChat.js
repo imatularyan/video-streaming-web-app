@@ -27,41 +27,44 @@ const LiveChat = () => {
 
   return (
     <>
-      <div className="w-full h-[600px] ml-2 p-2 border border-black bg-slate-100 rounded-lg overflow-y-scroll flex flex-col-reverse">
-        <div>
-          {
-            // Disclaimer: Don't use indexes as keys
-            chatMessages.map((c, i) => (
+      <div className=" w-full h-[680px] shadow-md border bg-slate-100 rounded-lg flex flex-col-reverse overflow-y-scroll pt-2 whitespace-nowrap">
+        <div className="">
+          <div className="p-1">
+            {chatMessages.map((c, i) => (
               <ChatMessage key={i} name={c.name} message={c.message} />
-            ))
-          }
+            ))}
+          </div>
+          <form
+            className="w-full sticky bottom-0"
+            onSubmit={(e) => {
+              e.preventDefault();
+
+              dispatch(
+                addMessage({
+                  name: "Atul Aryan",
+                  message: liveMessage,
+                })
+              );
+              setLiveMessage("");
+            }}
+          >
+            <div className="w-full text-center flex items-center p-2 gap-1 bg-slate-100">
+              <input
+                placeholder="Type your message...."
+                className=" p-2 w-4/5 rounded-md m-auto shadow-sm"
+                type="text"
+                value={liveMessage}
+                onChange={(e) => {
+                  setLiveMessage(e.target.value);
+                }}
+              />
+              <button className="ml-1 py-2 px-5 bg-blue-400 rounded-md text-white font-bold">
+                Send
+              </button>
+            </div>
+          </form>
         </div>
       </div>
-
-      <form
-        className="w-full p-2 ml-2 border border-black"
-        onSubmit={(e) => {
-          e.preventDefault();
-
-          dispatch(
-            addMessage({
-              name: "Akshay Saini",
-              message: liveMessage,
-            })
-          );
-          setLiveMessage("");
-        }}
-      >
-        <input
-          className="px-2 w-96"
-          type="text"
-          value={liveMessage}
-          onChange={(e) => {
-            setLiveMessage(e.target.value);
-          }}
-        />
-        <button className="px-2 mx-2 bg-green-100">Send</button>
-      </form>
     </>
   );
 };

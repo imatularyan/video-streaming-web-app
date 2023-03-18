@@ -1,21 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { YOUTUBE_VIDEOS_API } from "../utils/constants";
 import VideoCard, { AdvideoCard } from "./VideoCard";
 import { Link } from "react-router-dom";
+import useVideo from "../utils/useVideo";
 
 const VideoContainer = () => {
-  const [videoData, setVideoData] = useState([]);
-
-  useEffect(() => {
-    getVideos();
-  }, []);
-
-  const getVideos = async () => {
-    const response = await fetch(YOUTUBE_VIDEOS_API);
-    const json = await response.json();
-    // console.log(json.items);
-    setVideoData(json.items);
-  };
+  const videoData = useVideo();
 
   return (
     <div className="flex flex-wrap justify-between">

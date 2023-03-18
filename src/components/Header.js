@@ -28,6 +28,7 @@ const Header = () => {
     return () => {
       clearTimeout(timer);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchQuery]);
 
   const getSearchSuggestions = async () => {
@@ -70,7 +71,7 @@ const Header = () => {
         />
         {searchQuery.length >= 1
           ? showSuggestions && (
-              <div className="absolute w-[525px] bg-white mt-12 shadow-sm rounded-lg border border-gray-100 cursor-pointer">
+              <div className="absolute w-[525px] bg-white mt-12 shadow-sm rounded-lg border border-gray-100 cursor-pointer z-50">
                 <ul>
                   {suggestions.map((s) => (
                     <li

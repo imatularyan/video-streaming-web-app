@@ -7,7 +7,7 @@ const Demo2 = () => {
   const ref = useRef(0);
   /** not like => ref = 0
    * ref = { current: 0 }
-   *
+
    *
    * */
 
@@ -20,7 +20,7 @@ const Demo2 = () => {
   useEffect(() => {
     if (i.current) return;
     i.current = setInterval(() => {
-      //console.log("Namaste React", Math.random());
+      //console.log("Random", Math.random());
     }, 1000);
   }, []);
 

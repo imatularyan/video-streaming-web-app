@@ -1,5 +1,5 @@
 import React from "react";
-import { list } from "../utils/helper";
+import { list } from "../utils/constants";
 
 const ButtonList = () => {
   return (

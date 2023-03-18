@@ -1,14 +1,12 @@
 import React from "react";
 
 const VideoCard = ({ info }) => {
-  console.log(info);
-
   const { snippet, statistics } = info;
   const { channelTitle, title, thumbnails } = snippet;
   const { viewCount } = statistics;
 
   return (
-    <div className=" w-80 h-fit my-3">
+    <div className=" w-80 h-fit my-3 cursor-pointer">
       <div className="w-full h-44">
         <img
           className=" w-full h-full rounded-xl object-cover"

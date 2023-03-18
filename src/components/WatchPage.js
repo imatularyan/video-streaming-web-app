@@ -4,10 +4,13 @@ import { useSearchParams } from "react-router-dom";
 import { closeMenu } from "../utils/appSlice";
 import CommentsContainer from "./CommentsContainer";
 import LiveChat from "./LiveChat";
+import useVideo from "../utils/useVideo";
 
 const WatchPage = () => {
+  const videoData = useVideo();
+
   const [searchParams] = useSearchParams();
-  console.log(searchParams.get("v"));
+  // console.log(searchParams.get("v"));
 
   const dispatch = useDispatch();
 
@@ -16,24 +19,37 @@ const WatchPage = () => {
   }, [dispatch]);
 
   return (
-    <div className="flex flex-col mr-auto">
-      <div className="px-5 h-full pt-5 pb-40 bg-black">
-        <div className="">
+    <div className="flex flex-col w-full">
+      {/* <div className="bg-gradient-to-r  from-neutral-900 to-neutral-900 h-[800px] w-screen blur-md  bg-black/100 absolute -z-40"></div> */}
+      {/* <div className="bg-gradient-to-r  from-neutral-600 via-transparent to-neutral-700 h-full backdrop-blur-3xl"> */}
+      {/* <div className=" h-full w-full px-4 pt-4 pb-20 flex gap-5 bg-black/70 z-30"> */}
+      <div className=" h-full w-full px-4 pt-4 pb-20 flex gap-5 bg-white/30 z-30 shadow-sm border-b">
+        <div className="z-40">
           <iframe
-            width="1200"
-            height="600"
+            className="z-50 shadow-md shadow-zinc-500"
+            width="1100"
+            height="680"
             src={"https://www.youtube.com/embed/" + searchParams.get("v")}
             title="YouTube video player"
-            frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
+            allowFullScreen
           ></iframe>
+          <div className=" text-xl font-bold mt-4">
+            {videoData.map((video) =>
+              video.id === searchParams.toString().slice(2, 13)
+                ? video.snippet.title.toString()
+                : null
+            )}
+          </div>
         </div>
-        <div className="w-full">
+        <div className=" w-full min-w-fit">
           <LiveChat />
         </div>
       </div>
-      <CommentsContainer />
+      {/* </div> */}
+      <div className="">
+        <CommentsContainer />
+      </div>
     </div>
   );
 };

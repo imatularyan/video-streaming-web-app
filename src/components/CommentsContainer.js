@@ -4,80 +4,80 @@ import userIcon from "../assets/userIcon.svg";
 const commentsData = [
   {
     name: "Atul Aryan",
-    text: " Lorem Ipsum has been the industry's standard dummy",
+    text: " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     replies: [],
   },
   {
     name: "Atul Aryan",
-    text: " Lorem Ipsum has been the industry's standard dummy",
+    text: " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     replies: [
       {
         name: "Atul Aryan",
-        text: " Lorem Ipsum has been the industry's standard dummy",
+        text: " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
         replies: [],
       },
       {
         name: "Atul Aryan",
-        text: " Lorem Ipsum has been the industry's standard dummy",
+        text: " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
         replies: [
           {
             name: "Atul Aryan",
-            text: " Lorem Ipsum has been the industry's standard dummy",
+            text: " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
             replies: [],
           },
           {
             name: "Atul Aryan",
-            text: " Lorem Ipsum has been the industry's standard dummy",
+            text: " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
             replies: [
               {
                 name: "Atul Aryan",
-                text: " Lorem Ipsum has been the industry's standard dummy",
+                text: " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
                 replies: [
                   {
                     name: "Atul Aryan",
-                    text: " Lorem Ipsum has been the industry's standard dummy",
+                    text: " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
                     replies: [],
                   },
                   {
                     name: "Atul Aryan",
-                    text: " Lorem Ipsum has been the industry's standard dummy",
+                    text: " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
                     replies: [],
                   },
                   {
                     name: "Atul Aryan",
-                    text: " Lorem Ipsum has been the industry's standard dummy",
+                    text: " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
                     replies: [
                       {
                         name: "Atul Aryan",
-                        text: " Lorem Ipsum has been the industry's standard dummy",
+                        text: " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
                         replies: [],
                       },
                       {
                         name: "Atul Aryan",
-                        text: " Lorem Ipsum has been the industry's standard dummy",
+                        text: " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
                         replies: [
                           {
                             name: "Atul Aryan",
-                            text: " Lorem Ipsum has been the industry's standard dummy",
+                            text: " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
                             replies: [],
                           },
                           {
                             name: "Atul Aryan",
-                            text: " Lorem Ipsum has been the industry's standard dummy",
+                            text: " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
                             replies: [],
                           },
                           {
                             name: "Atul Aryan",
-                            text: " Lorem Ipsum has been the industry's standard dummy",
+                            text: " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
                             replies: [
                               {
                                 name: "Atul Aryan",
-                                text: " Lorem Ipsum has been the industry's standard dummy",
+                                text: " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
                                 replies: [],
                               },
                               {
                                 name: "Atul Aryan",
-                                text: " Lorem Ipsum has been the industry's standard dummy",
+                                text: " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
                                 replies: [],
                               },
                             ],
@@ -96,32 +96,32 @@ const commentsData = [
   },
   {
     name: "Atul Aryan",
-    text: " Lorem Ipsum has been the industry's standard dummy",
+    text: " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     replies: [],
   },
   {
     name: "Atul Aryan",
-    text: " Lorem Ipsum has been the industry's standard dummy",
+    text: " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     replies: [],
   },
   {
     name: "Atul Aryan",
-    text: " Lorem Ipsum has been the industry's standard dummy",
+    text: " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     replies: [],
   },
   {
     name: "Atul Aryan",
-    text: " Lorem Ipsum has been the industry's standard dummy",
+    text: " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     replies: [],
   },
   {
     name: "Atul Aryan",
-    text: " Lorem Ipsum has been the industry's standard dummy",
+    text: " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     replies: [],
   },
   {
     name: "Atul Aryan",
-    text: " Lorem Ipsum has been the industry's standard dummy",
+    text: " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     replies: [],
   },
 ];
@@ -129,10 +129,10 @@ const commentsData = [
 const Comment = ({ data }) => {
   const { name, text } = data;
   return (
-    <div className="flex shadow-zinc-800 bg-slate-500 p-2 rounded-lg my-2">
-      <img className=" w-14 h-14" alt="usercomment" src={userIcon} />
+    <div className="flex shadow-zinc-800 bg-zinc-100 p-1 rounded-md my-1 w-fit">
+      <img className=" w-5" alt="usercomment" src={userIcon} />
       <div className="px-3">
-        <p className="font-semibold">{name}</p>
+        <p className="font-medium">{name}</p>
         <p>{text}</p>
       </div>
     </div>
@@ -141,18 +141,18 @@ const Comment = ({ data }) => {
 
 const CommentsList = ({ comments }) => {
   return comments.map((comment, index) => (
-    <div key={index}>
-      <Comment data={comment} />
-      <div className="pl-5 border border-l-black ml-5">
+    <>
+      <Comment key={index} data={comment} />
+      <div className=" border-l border-red-400 ml-2">
         <CommentsList comments={comment.replies} />
       </div>
-    </div>
+    </>
   ));
 };
 
 const CommentsContainer = () => {
   return (
-    <div className="m-5 p-2">
+    <div className=" p-2 w-full">
       <h1 className="text-xl font-semibold">Comments: </h1>
       <CommentsList comments={commentsData} />
     </div>
