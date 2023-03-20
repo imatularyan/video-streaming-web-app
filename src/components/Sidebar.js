@@ -1,48 +1,46 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { categories } from "../utils/constants";
+import { mainCategories } from "../utils/constants";
 
 const Sidebar = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
+  let categoriesList = Object.entries(categories);
+  let mainCategoriesList = Object.entries(mainCategories);
 
   if (!isMenuOpen) return null;
 
   return (
-    <div className=" flex-none min-w-max flex-col h-screen text-center p-5 text-base font-light font-sans overflow-auto">
-      <div className=" w-52">
-        <Link to="/">
-          <h1 className="active:font-medium hover:bg-gray-300 p-2 rounded-lg cursor-pointer font-medium bg-gray-200">
-            Home
-          </h1>
-        </Link>
-        <h1 className="active:font-medium hover:bg-gray-100 p-2 rounded-lg cursor-pointer">
-          Shorts
-        </h1>
-        <h1 className="active:font-medium hover:bg-gray-100 p-2 rounded-lg cursor-pointer">
-          Subscriptions
-        </h1>
-        <hr className=" m-2"></hr>
+    <div className=" flex-none flex-col py-5 px-5 text-sm overflow-auto">
+      <div className=" w-52 h-screen min-w-max">
         <ul>
-          <li className="active:font-medium hover:bg-gray-100 p-2 rounded-lg cursor-pointer">
-            Library
-          </li>
-          <li className="active:font-medium hover:bg-gray-100 p-2 rounded-lg cursor-pointer">
-            History
-          </li>
-          <li className="active:font-medium hover:bg-gray-100 p-2 rounded-lg cursor-pointer">
-            Your videos
-          </li>
-          <li className="active:font-medium hover:bg-gray-100 p-2 rounded-lg cursor-pointer">
-            Your movies
-          </li>
-          <li className="active:font-medium hover:bg-gray-100 p-2 rounded-lg cursor-pointer">
-            Watch Later
-          </li>
-          <Link to="demo">
-            <li className="active:font-medium hover:bg-gray-100 p-2 rounded-lg cursor-pointer">
-              Demo
+          {mainCategoriesList.map(([key, val] = mainCategoriesList) => (
+            <Link to="/" key={key}>
+              <li className=" hover:bg-gray-300 p-2 rounded-lg cursor-pointer font-Roboto active:bg-gray-200 flex items-center gap-6">
+                <img
+                  className=" w-6"
+                  alt="subscriptions"
+                  src={require("../assets/" + val)}
+                />
+                <div>{key}</div>
+              </li>
+            </Link>
+          ))}
+          <hr className=" m-2"></hr>
+          {categoriesList.map(([key, val] = categoriesList) => (
+            <li
+              key={key}
+              className=" hover:bg-gray-100 p-2 rounded-lg cursor-pointer flex items-center gap-6"
+            >
+              <img
+                className=" w-6"
+                alt="subscriptions"
+                src={require("../assets/" + val)}
+              />
+              <div>{key}</div>
             </li>
-          </Link>
+          ))}
         </ul>
         <hr className=" m-2"></hr>
       </div>

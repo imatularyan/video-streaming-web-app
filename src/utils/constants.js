@@ -1,4 +1,4 @@
-export const GOOGLE_API_KEY = "AIzaSyCYag8pZL7NHKX1cR1JKmWkawTp27SvbiA";
+export const GOOGLE_API_KEY = "AIzaSyCMYzaI96wXMDj3hFa1sdseOeoWZd4NPDU";
 
 export const LIVE_CHAT_COUNT = 25;
 
@@ -10,7 +10,6 @@ export const YOUTUBE_SEARCH_API =
   "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
 
 export const list = [
-  "All",
   "Music",
   "Kapil Sharma",
   "Gaming",
@@ -22,6 +21,20 @@ export const list = [
   "JavaScript",
   "Universe",
   "Computers",
-  "Comedy Clubs",
   "Namaste JavaScript",
 ];
+
+export const mainCategories = {
+  Home: "home.svg",
+  Shorts: "shorts.svg",
+  Subscriptions: "subscription.svg",
+};
+
+export const categories = {
+  Library: "library.png",
+  History: "history.svg",
+  "Your videos": "video.svg",
+  "Your movies": "media.svg",
+  "Watch Later": "clock.svg",
+  "Show More": "downArrow.svg",
+};

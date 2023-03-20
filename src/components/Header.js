@@ -34,7 +34,7 @@ const Header = () => {
   const getSearchSuggestions = async () => {
     const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
     const json = await data.json();
-    console.log(json);
+    // console.log(json);
     setSuggestions(json[1]);
 
     dispatch(
@@ -58,7 +58,9 @@ const Header = () => {
         />
       </div>
       <div className=" w-24 cursor-pointer">
-        <img src={Logo} alt="logo" />
+        <a href="/">
+          <img src={Logo} alt="logo" />
+        </a>
       </div>
       <div className="flex border-zinc-300 shadow-inner border m-auto rounded-full w-[600px]">
         <input
@@ -73,12 +75,12 @@ const Header = () => {
           ? showSuggestions && (
               <div className="absolute w-[525px] bg-white mt-12 shadow-sm rounded-lg border border-gray-100 cursor-pointer z-50">
                 <ul>
-                  {suggestions.map((s) => (
+                  {suggestions.map((searchList) => (
                     <li
-                      key={s}
+                      key={searchList}
                       className="py-2 px-3 shadow-sm hover:bg-gray-100"
                     >
-                      {s}
+                      {searchList}
                     </li>
                   ))}
                 </ul>
