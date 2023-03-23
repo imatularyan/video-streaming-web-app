@@ -9,6 +9,9 @@ export const YOUTUBE_VIDEOS_API =
 export const YOUTUBE_SEARCH_API =
   "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
 
+export const YOUTUBE_SEARCH_RESULT =
+  "https://youtube.googleapis.com/youtube/v3/search?q=+";
+
 export const list = [
   "Music",
   "Kapil Sharma",

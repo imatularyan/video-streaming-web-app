@@ -1,53 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Logo from "../assets/Logo.webp";
 import toogleicon from "../assets/hamburger.svg";
 import searchIcon from "../assets/searchIcon.svg";
 import userIcon from "../assets/userIcon.svg";
 import videoCam from "../assets/videoCam.svg";
 import bell from "../assets/bell.svg";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
-import { YOUTUBE_SEARCH_API } from "../utils/constants";
-import { cacheResults } from "../utils/searchSlice";
 import { Link } from "react-router-dom";
 import useResults from "../utils/useResults";
+import useSuggestions from "../utils/useSuggestions";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-
-  const searchCache = useSelector((store) => store.search);
   const dispatch = useDispatch();
   useResults(searchQuery);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (searchCache[searchQuery]) {
-        setSuggestions(searchCache[searchQuery]);
-      } else {
-        getSearchSuggestions();
-      }
-    }, 200);
-
-    return () => {
-      clearTimeout(timer);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchQuery]);
-
-  const getSearchSuggestions = async () => {
-    const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
-    const json = await data.json();
-    console.log(json);
-    setSuggestions(json[1]);
-
-    dispatch(
-      cacheResults({
-        [searchQuery]: json[1],
-      })
-    );
-  };
+  useSuggestions(searchQuery, setSuggestions);
 
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
@@ -79,31 +49,29 @@ const Header = () => {
             setShowSuggestions(false);
           }}
         />
-        <div
-          className={
-            "absolute w-[535px] bg-white top-12 h-fit shadow-lg border-l border-r border-gray-300 rounded-xl border z-50 py-3 "
-          }
-        >
-          {searchQuery.length >= null
-            ? showSuggestions && (
-                <ul>
-                  {suggestions.map((searchList) => (
-                    <li
-                      key={searchList}
-                      className="py-2 px-3 hover:bg-gray-100 flex"
-                    >
-                      <img
-                        className="w-6 mr-3"
-                        src={searchIcon}
-                        alt="searchIcon"
-                      />
-                      {searchList}
-                    </li>
-                  ))}
-                </ul>
-              )
-            : null}
-        </div>
+
+        {showSuggestions && (
+          <div
+            className={
+              "absolute w-[535px] top-12 h-fit rounded-xl z-50 shadow-lg border-gray-300 border-l border-r "
+            }
+          >
+            <ul>
+              {suggestions.map((searchList) => (
+                <Link to="/results" key={searchList}>
+                  <li className="py-2 px-3 hover:bg-gray-100 flex transition-transform duration-1000 my-2">
+                    <img
+                      className="w-6 mr-3"
+                      src={searchIcon}
+                      alt="searchIcon"
+                    />
+                    {searchList}
+                  </li>
+                </Link>
+              ))}
+            </ul>
+          </div>
+        )}
         <Link to="results">
           <div className="rounded-r-full bg-gray-100 h-full w-[70px] border-l-0 border border-gray-300 p-[5px] cursor-pointer">
             <div className=" w-7 m-auto">

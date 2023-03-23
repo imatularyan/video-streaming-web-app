@@ -1,24 +1,31 @@
 import { useState, useEffect } from "react";
 import { GOOGLE_API_KEY } from "./constants";
+import { YOUTUBE_SEARCH_RESULT } from "./constants";
 
 const useResults = (searchQuery) => {
   const [searchData, setSearchData] = useState([]);
 
   useEffect(() => {
     getSearchData();
-  }, [searchQuery]);
+    console.clear();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const getSearchData = async () => {
     const response = await fetch(
-      `https://youtube.googleapis.com/youtube/v3/search?q=+${searchQuery}&maxResults=50&key=${GOOGLE_API_KEY}`,
+      `${YOUTUBE_SEARCH_RESULT}${searchQuery}&maxResults=50&key=${GOOGLE_API_KEY}`,
       {
         Authorization: GOOGLE_API_KEY,
         Accept: "application/json",
       }
     );
-    const jsonData = await response.json();
-    setSearchData(jsonData);
-    console.log(jsonData);
+    if (response.status >= 200 && response.status <= 299) {
+      const jsonData = await response.json();
+      setSearchData(jsonData);
+    } else {
+      setSearchData(response.status);
+      console.clear();
+    }
   };
 
   return searchData;

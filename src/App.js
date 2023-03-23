@@ -7,6 +7,7 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import MainContainer from "./components/MainContainer";
 import WatchPage from "./components/WatchPage";
 import ResultsPage from "./components/ResultsPage";
+import Error from "./components/Error";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ export const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <Body />,
+    errorElement: <Error />,
     children: [
       {
         path: "/",

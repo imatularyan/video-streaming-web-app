@@ -5,20 +5,24 @@ import { closeMenu } from "../utils/appSlice";
 import CommentsContainer from "./CommentsContainer";
 import LiveChat from "./LiveChat";
 import useVideo from "../utils/useVideo";
+import Error from "./Error";
 
 const WatchPage = () => {
   const videoData = useVideo();
-
   const [searchParams] = useSearchParams();
-  // console.log(searchParams.get("v"));
-
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(closeMenu());
   }, [dispatch]);
 
-  return (
+  return videoData ? (
+    <Error
+      errorMessage={
+        "The video API is exceeded the limit, please try again later!"
+      }
+    />
+  ) : (
     <div className="flex flex-col w-full">
       {/* <div className="bg-gradient-to-r  from-neutral-900 to-neutral-900 h-[800px] w-screen blur-md  bg-black/100 absolute -z-40"></div> */}
       {/* <div className="bg-gradient-to-r  from-neutral-600 via-transparent to-neutral-700 h-full backdrop-blur-3xl"> */}
@@ -35,7 +39,7 @@ const WatchPage = () => {
             allowFullScreen
           ></iframe>
           <div className=" text-xl font-bold mt-4">
-            {videoData.map((video) =>
+            {videoData?.map((video) =>
               video.id === searchParams.toString().slice(2, 13)
                 ? video.snippet.title.toString()
                 : null
