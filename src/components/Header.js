@@ -7,18 +7,19 @@ import videoCam from "../assets/videoCam.svg";
 import bell from "../assets/bell.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
-import { GOOGLE_API_KEY, YOUTUBE_SEARCH_API } from "../utils/constants";
+import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
 import { Link } from "react-router-dom";
+import useResults from "../utils/useResults";
 
-const Header = ({ setError }) => {
+const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [resultsVisible, setResultsVisible] = useState("invisible");
 
   const searchCache = useSelector((store) => store.search);
   const dispatch = useDispatch();
+  useResults(searchQuery);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -26,7 +27,6 @@ const Header = ({ setError }) => {
         setSuggestions(searchCache[searchQuery]);
       } else {
         getSearchSuggestions();
-        getSearchData();
       }
     }, 200);
 
@@ -47,18 +47,6 @@ const Header = ({ setError }) => {
         [searchQuery]: json[1],
       })
     );
-  };
-
-  const getSearchData = async () => {
-    const response = await fetch(
-      `https://youtube.googleapis.com/youtube/v3/search?q=+${searchQuery}&maxResults=50&key=${GOOGLE_API_KEY}`,
-      {
-        Authorization: GOOGLE_API_KEY,
-        Accept: "application/json",
-      }
-    );
-    const jsonData = await response.json();
-    console.log(jsonData);
   };
 
   const toggleMenuHandler = () => {
@@ -89,13 +77,11 @@ const Header = ({ setError }) => {
           onFocus={() => setShowSuggestions(true)}
           onBlur={() => {
             setShowSuggestions(false);
-            setResultsVisible("visible");
           }}
         />
         <div
           className={
-            "absolute w-[535px] bg-white top-12 h-fit shadow-lg border-l border-r border-gray-300 rounded-xl border z-50 py-3 " +
-            resultsVisible
+            "absolute w-[535px] bg-white top-12 h-fit shadow-lg border-l border-r border-gray-300 rounded-xl border z-50 py-3 "
           }
         >
           {searchQuery.length >= null
@@ -118,11 +104,13 @@ const Header = ({ setError }) => {
               )
             : null}
         </div>
-        <div className="rounded-r-full bg-gray-100 h-full w-[70px] border-l-0 border border-gray-300 p-[5px] cursor-pointer">
-          <div className=" w-7 m-auto">
-            <img className="w-full" src={searchIcon} alt="searchIcon" />
+        <Link to="results">
+          <div className="rounded-r-full bg-gray-100 h-full w-[70px] border-l-0 border border-gray-300 p-[5px] cursor-pointer">
+            <div className=" w-7 m-auto">
+              <img className="w-full" src={searchIcon} alt="searchIcon" />
+            </div>
           </div>
-        </div>
+        </Link>
       </div>
       <div className="flex gap-3 items-center justify-center">
         <div className=" w-8 p-1 cursor-pointer rounded-full hover:bg-gray-100">
