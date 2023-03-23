@@ -5,6 +5,9 @@ import useVideo from "../utils/useVideo";
 const VideoContainer = () => {
   const videoData = useVideo();
 
+  if (videoData.length <= 0 || videoData.length === "0")
+    return <h1>The API daily limit is exceeded, try agian later!</h1>;
+
   return (
     <div className="flex flex-wrap w-fit gap-4">
       {videoData[0] && <AdvideoCard info={videoData[0]} />}

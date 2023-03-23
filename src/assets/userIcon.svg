@@ -1,13 +1,9 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
-<svg width="64px" height="64px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#000000" stroke-width="1.6">
-<g id="SVGRepo_bgCarrier" stroke-width="0"/>
-<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#969696" stroke-width="1.92">
-<ellipse cx="32" cy="24" rx="12" ry="16"/>
-<path d="M22 33.46s-10.09 2.68-12 8A33 33 0 0 0 8 56h48a33 33 0 0 0-1.94-14.54c-1.93-5.32-12-8-12-8"/>
+<svg fill="#add1ff" width="64px" height="64px" viewBox="0 0 1920.00 1920.00" xmlns="http://www.w3.org/2000/svg" stroke="#add1ff">
+<g id="SVGRepo_bgCarrier" stroke-width="0" transform="translate(67.19999999999993,67.19999999999993), scale(0.93)">
+<rect x="0" y="0" width="1920.00" height="1920.00" rx="960" fill="#000000" strokewidth="0"/>
 </g>
-<g id="SVGRepo_iconCarrier">
-<ellipse cx="32" cy="24" rx="12" ry="16"/>
-<path d="M22 33.46s-10.09 2.68-12 8A33 33 0 0 0 8 56h48a33 33 0 0 0-1.94-14.54c-1.93-5.32-12-8-12-8"/>
-</g>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="m928.806 512-185.984 512h434.304L991.142 512h-62.336Zm419.072 981.875-124.16-341.888h-527.36L572.07 1493.875 451.878 1450.1 839.206 383.987h241.664l387.2 1066.112-120.192 43.776ZM1728.038-.013h-1536c-105.856 0-192 86.144-192 192v1536c0 105.856 86.144 192 192 192h1536c105.856 0 192-86.144 192-192v-1536c0-105.856-86.144-192-192-192Z" fill-rule="evenodd"/> </g>
 </svg>

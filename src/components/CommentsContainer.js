@@ -141,12 +141,12 @@ const Comment = ({ data }) => {
 
 const CommentsList = ({ comments }) => {
   return comments.map((comment, index) => (
-    <>
-      <Comment key={index} data={comment} />
+    <div key={index}>
+      <Comment data={comment} />
       <div className=" border-l border-red-400 ml-2">
         <CommentsList comments={comment.replies} />
       </div>
-    </>
+    </div>
   ));
 };
 
