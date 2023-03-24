@@ -6,14 +6,8 @@ const Error = ({ statusCode, errorMessage, width }) => {
         width
       }
     >
-      {statusCode || errorMessage ? (
-        <>
-          <h1>{statusCode}</h1>
-          <p>{errorMessage}</p>
-        </>
-      ) : (
-        <h1>Page is not found!</h1>
-      )}
+      <h1>{statusCode}</h1>
+      <p>{errorMessage}</p>
     </div>
   );
 };

@@ -53,7 +53,7 @@ const Header = () => {
         {showSuggestions && (
           <div
             className={
-              "absolute w-[535px] top-12 h-fit rounded-xl z-50 shadow-lg border-gray-300 border-l border-r "
+              "absolute w-[535px] top-12 h-fit rounded-xl z-50 shadow-lg border-gray-300 border-l border-r bg-white "
             }
           >
             <ul>

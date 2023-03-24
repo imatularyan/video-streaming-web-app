@@ -16,7 +16,7 @@ const WatchPage = () => {
     dispatch(closeMenu());
   }, [dispatch]);
 
-  return videoData ? (
+  return !videoData >= 200 ? (
     <Error
       errorMessage={
         "The video API is exceeded the limit, please try again later!"

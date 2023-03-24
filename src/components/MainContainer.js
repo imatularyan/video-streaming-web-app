@@ -7,7 +7,7 @@ import useVideo from "../utils/useVideo";
 const MainContainer = () => {
   const videoData = useVideo();
 
-  return videoData ? (
+  return !videoData >= 200 ? (
     <Error
       width={"w-screen"}
       statusCode={videoData}

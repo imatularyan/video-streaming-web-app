@@ -13,7 +13,6 @@ const useVideo = () => {
     const response = await fetch(YOUTUBE_VIDEOS_API);
     if (response.status >= 200 && response.status <= 299) {
       const json = await response.json();
-      console.log("hook", json?.items);
       setVideoData(json?.items);
     } else {
       // Handle errors
