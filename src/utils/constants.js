@@ -12,6 +12,10 @@ export const YOUTUBE_SEARCH_API =
 export const YOUTUBE_SEARCH_RESULT =
   "https://youtube.googleapis.com/youtube/v3/search?q=+";
 
+export const YOUTUBE_COMMENTS_API =
+  "https://youtube.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=IN&key=" +
+  GOOGLE_API_KEY;
+
 export const list = [
   "Music",
   "Kapil Sharma",

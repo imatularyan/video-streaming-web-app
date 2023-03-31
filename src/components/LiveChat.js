@@ -27,7 +27,7 @@ const LiveChat = () => {
 
   return (
     <>
-      <div className=" w-full h-[680px] shadow-md border bg-slate-100 rounded-lg flex flex-col-reverse overflow-y-scroll pt-2 whitespace-nowrap">
+      <div className=" w-full h-[680px] border bg-white rounded-lg flex flex-col-reverse overflow-y-scroll pt-2 whitespace-nowrap">
         <div className="">
           <div className="p-1">
             {chatMessages.map((c, i) => (
@@ -48,7 +48,7 @@ const LiveChat = () => {
               setLiveMessage("");
             }}
           >
-            <div className="w-full text-center flex items-center p-2 gap-1 bg-slate-100">
+            <div className="w-full text-center flex items-center p-2 gap-1 bg-gray-100">
               <input
                 placeholder="Type your message...."
                 className=" p-2 w-4/5 rounded-md m-auto shadow-sm"

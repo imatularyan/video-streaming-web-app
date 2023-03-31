@@ -27,10 +27,10 @@ const WatchPage = () => {
       {/* <div className="bg-gradient-to-r  from-neutral-900 to-neutral-900 h-[800px] w-screen blur-md  bg-black/100 absolute -z-40"></div> */}
       {/* <div className="bg-gradient-to-r  from-neutral-600 via-transparent to-neutral-700 h-full backdrop-blur-3xl"> */}
       {/* <div className=" h-full w-full px-4 pt-4 pb-20 flex gap-5 bg-black/70 z-30"> */}
-      <div className=" h-full w-full px-4 pt-4 pb-20 flex gap-5 bg-white/30 z-30 shadow-sm border-b">
+      <div className=" h-full w-full px-4 pt-4 pb-20 flex gap-5 bg-white/30 z-30 border-b">
         <div className="z-40">
           <iframe
-            className="z-50 shadow-md shadow-zinc-500"
+            className="z-50"
             width="1100"
             height="680"
             src={"https://www.youtube.com/embed/" + searchParams.get("v")}
