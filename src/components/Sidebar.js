@@ -18,7 +18,7 @@ const Sidebar = () => {
           {mainCategoriesList.map(([key, val] = mainCategoriesList) => (
             <Link to="/" key={key}>
               <li className=" hover:bg-gray-300 p-2 rounded-lg cursor-pointer font-Roboto active:bg-gray-200 flex items-center gap-6">
-                <img
+                <imgx
                   className=" w-6"
                   alt="subscriptions"
                   src={require("../assets/" + val)}

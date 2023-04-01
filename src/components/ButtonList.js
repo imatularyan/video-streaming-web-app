@@ -3,6 +3,7 @@ import useCategories from "../utils/useCategories";
 
 const ButtonList = () => {
   const categories = useCategories();
+  console.log("categories", categories);
   return (
     <span className="inline-block overflow-auto">
       <ul className=" inline-flex flex-row my-3 cursor-pointer overflow-x-scroll whitespace-nowrap will-change-transform transition duration-75 translate-x-0 text-sm relative overflow-hidden box-border items-center leading-8">
