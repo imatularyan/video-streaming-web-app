@@ -12,7 +12,7 @@ const Sidebar = () => {
   if (!isMenuOpen) return null;
 
   return (
-    <div className=" flex-none flex-col py-5 px-5 text-sm overflow-auto">
+    <div className=" flex-none flex-col py-5 px-5 text-sm overflow-auto shadow-md">
       <div className=" w-52 h-screen min-w-max">
         <ul>
           {mainCategoriesList.map(([key, val] = mainCategoriesList) => (

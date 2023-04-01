@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { YOUTUBE_COMMENTS_API } from "../utils/constants";
+import { YOUTUBE_COMMENTS_API } from "./constants";
 
-const useVideo = () => {
-  const [comment, setComment] = useState([]);
+const useCategories = () => {
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     getVideos();
@@ -16,16 +16,16 @@ const useVideo = () => {
     });
     if (response.status >= 200 && response.status <= 299) {
       const json = await response.json();
-      setComment(json?.items);
+      setCategories(json?.items);
     } else {
       // Handle errors
-      setComment(response.status);
+      setCategories(response.status);
       console.clear();
     }
   };
 
   //return video data
-  return comment;
+  return categories;
 };
 
-export default useVideo;
+export default useCategories;

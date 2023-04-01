@@ -16,7 +16,7 @@ const MainContainer = () => {
       }
     />
   ) : (
-    <div className="flex flex-col px-2">
+    <div className="flex flex-col px-2 w-4/5 m-auto">
       <ButtonList />
       <VideoContainer />
     </div>
