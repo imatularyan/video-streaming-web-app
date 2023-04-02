@@ -6,8 +6,8 @@ const VideoCard = ({ info }) => {
   const { viewCount } = statistics;
 
   return (
-    <div className=" w-80 h-fit my-2 cursor-pointer">
-      <div className="w-full h-44">
+    <div className="my-2 cursor-pointer 2xl:w-64 xl:w-[23rem] md:w-44">
+      <div className="xl:w-[23rem] xl:h-52  2xl:h-36 md:h-24">
         <img
           className=" w-full h-full rounded-xl object-cover"
           src={thumbnails.high.url}

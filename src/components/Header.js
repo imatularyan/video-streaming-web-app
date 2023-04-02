@@ -24,18 +24,20 @@ const Header = () => {
   };
 
   return (
-    <div className="flex gap-7 p-2 items-center px-6 font-light subpixel-antialiased">
-      <div className=" w-5 cursor-pointer">
-        <img
-          src={toogleicon}
-          alt="toggleicon"
-          onClick={() => toggleMenuHandler()}
-        />
-      </div>
-      <div className=" w-24 cursor-pointer">
-        <Link to="/">
-          <img src={Logo} alt="logo" />
-        </Link>
+    <div className="flex gap-7 items-center font-light h-14 px-4">
+      <div className="flex px-3 gap-6">
+        <div className=" w-[19px] cursor-pointer">
+          <img
+            src={toogleicon}
+            alt="toggleicon"
+            onClick={() => toggleMenuHandler()}
+          />
+        </div>
+        <div className=" w-[90px] cursor-pointer">
+          <Link to="/">
+            <img src={Logo} alt="logo" />
+          </Link>
+        </div>
       </div>
       <div className="flex  m-auto rounded-full w-[600px] h-10">
         <input

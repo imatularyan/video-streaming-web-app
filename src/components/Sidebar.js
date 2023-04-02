@@ -12,14 +12,14 @@ const Sidebar = () => {
   if (!isMenuOpen) return null;
 
   return (
-    <div className=" flex-none flex-col py-5 px-5 text-sm overflow-auto shadow-md">
-      <div className=" w-52 h-screen min-w-max">
+    <div className=" flex-none flex-col p-4 text-sm font-light overflow-y-scroll font-Roboto md:w-44 xl:min-w-max h-screen">
+      <div className="">
         <ul>
           {mainCategoriesList.map(([key, val] = mainCategoriesList) => (
             <Link to="/" key={key}>
-              <li className=" hover:bg-gray-300 p-2 rounded-lg cursor-pointer font-Roboto active:bg-gray-200 flex items-center gap-6">
-                <imgx
-                  className=" w-6"
+              <li className=" hover:bg-gray-100 py-2 px-3 rounded-lg active:bg-gray-200 flex items-center gap-6">
+                <img
+                  className=" w-5"
                   alt="subscriptions"
                   src={require("../assets/" + val)}
                 />
@@ -29,17 +29,19 @@ const Sidebar = () => {
           ))}
           <hr className=" m-2"></hr>
           {categoriesList.map(([key, val] = categoriesList) => (
-            <li
-              key={key}
-              className=" hover:bg-gray-100 p-2 rounded-lg cursor-pointer flex items-center gap-6"
-            >
-              <img
-                className=" w-6"
-                alt="subscriptions"
-                src={require("../assets/" + val)}
-              />
-              <div>{key}</div>
-            </li>
+            <Link to="/">
+              <li
+                key={key}
+                className=" py-2 px-3 rounded-lg cursor-pointer flex items-center gap-6 active:bg-gray-200 hover:bg-gray-100"
+              >
+                <img
+                  className=" w-5"
+                  alt="subscriptions"
+                  src={require("../assets/" + val)}
+                />
+                <div>{key}</div>
+              </li>
+            </Link>
           ))}
         </ul>
         <hr className=" m-2"></hr>
