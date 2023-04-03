@@ -31,8 +31,8 @@ const WatchPage = () => {
         <div className="z-40">
           <iframe
             className="z-50"
-            width="1100"
-            height="680"
+            width="950"
+            height="543"
             src={"https://www.youtube.com/embed/" + searchParams.get("v")}
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -46,7 +46,7 @@ const WatchPage = () => {
             )}
           </div>
         </div>
-        <div className=" w-full min-w-fit">
+        <div className=" w-full min-w-fit h-screen">
           <LiveChat />
         </div>
       </div>
