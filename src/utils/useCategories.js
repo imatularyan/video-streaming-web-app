@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { YOUTUBE_COMMENTS_API } from "./constants";
+import { YOUTUBE_CATEGORY_API } from "./constants";
 
 const useCategories = () => {
   const [categories, setCategories] = useState([]);
@@ -10,7 +10,7 @@ const useCategories = () => {
   }, []);
 
   const getVideos = async () => {
-    const response = await fetch(YOUTUBE_COMMENTS_API, {
+    const response = await fetch(YOUTUBE_CATEGORY_API, {
       Authorization: "AIzaSyDo7JQY5WfWC1kredar27izONSZV_1qmy0",
       Accept: "application/json",
     });
