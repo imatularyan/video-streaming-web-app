@@ -16,21 +16,6 @@ export const YOUTUBE_CATEGORY_API =
   "https://youtube.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=IN&key=" +
   GOOGLE_API_KEY;
 
-export const list = [
-  "Music",
-  "Kapil Sharma",
-  "Gaming",
-  "Mixes",
-  "Chill-out music",
-  "Dramedy",
-  "Fitness",
-  "Instrumentals",
-  "JavaScript",
-  "Universe",
-  "Computers",
-  "Namaste JavaScript",
-];
-
 export const mainCategories = {
   Home: "home.svg",
   Shorts: "shorts.svg",

@@ -1,12 +1,12 @@
-import VideoCard from "./VideoCard";
 import useResults from "../utils/useResults";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Error from "./Error";
 
 const ResultsPage = () => {
   const videoResults = useResults();
+  console.log(videoResults);
 
-  return !videoResults >= 200 || !videoResults <= 299 ? (
+  return videoResults >= "200" ? (
     <Error
       statusCode={videoResults}
       errorMessage={
@@ -14,15 +14,7 @@ const ResultsPage = () => {
       }
     />
   ) : (
-    <div className=" w-full h-screen font-roboto">
-      {videoResults?.items?.map((video, index) => (
-        <div className="w-full" key={index}>
-          <Link to={"/watch?v=" + video.id}>
-            <VideoCard info={video} />
-          </Link>
-        </div>
-      ))}
-    </div>
+    <div className=" w-full h-screen font-roboto"></div>
   );
 };
 
