@@ -10,7 +10,7 @@ export const YOUTUBE_SEARCH_API =
   "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
 
 export const YOUTUBE_SEARCH_RESULT =
-  "https://youtube.googleapis.com/youtube/v3/search?q=+";
+  "https://youtube.googleapis.com/youtube/v3/search?";
 
 export const YOUTUBE_CATEGORY_API =
   "https://youtube.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=IN&key=" +

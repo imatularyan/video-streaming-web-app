@@ -6,7 +6,7 @@ import store from "./utils/store";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import MainContainer from "./components/MainContainer";
 import WatchPage from "./components/WatchPage";
-import ResultsPage from "./components/ResultsPage";
+import ResultPage from "./components/ResultPage";
 import Error from "./components/Error";
 
 const App = () => {
@@ -29,12 +29,12 @@ export const appRouter = createBrowserRouter([
         element: <MainContainer />,
       },
       {
-        path: "watch",
+        path: "/watch",
         element: <WatchPage />,
       },
       {
-        path: "results",
-        element: <ResultsPage />,
+        path: "/result",
+        element: <ResultPage />,
       },
     ],
   },

@@ -2,11 +2,11 @@ import React from "react";
 import VideoContainer from "./VideoContainer";
 import Error from "./Error";
 import useVideo from "../utils/useVideo";
+import ButtonList from "./ButtonList";
 
 const MainContainer = () => {
   const videoData = useVideo();
-
-  return videoData >= "200" ? (
+  return !videoData?.length ? (
     <Error
       width={"w-screen"}
       statusCode={videoData}
@@ -15,8 +15,8 @@ const MainContainer = () => {
       }
     />
   ) : (
-    <div className="flex flex-col px-2 w-11/12 justify-center items-center mx-auto">
-      {" "}
+    <div className="flex flex-col px-2 w-10/12 justify-center mx-auto">
+      <ButtonList />
       <VideoContainer />
     </div>
   );

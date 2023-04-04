@@ -52,19 +52,16 @@ const Header = () => {
           }}
         />
 
-        <Link to="/results">
-          {showSuggestions && (
-            <div
-              className={
-                "absolute w-[535px] top-12 h-fit rounded-xl z-50 shadow-lg border-gray-300 border-l border-r bg-white "
-              }
-            >
-              <ul>
-                {suggestions.map((searchList) => (
-                  <li
-                    key={searchList}
-                    className="py-2 px-3 hover:bg-gray-100 flex transition-transform duration-1000 my-2"
-                  >
+        {showSuggestions && (
+          <div
+            className={
+              "absolute w-[535px] top-12 h-fit rounded-xl z-50 shadow-lg border-gray-300 border-l border-r bg-white "
+            }
+          >
+            <ul>
+              {suggestions.map((searchList) => (
+                <Link to="/results" key={searchList}>
+                  <li className="py-2 px-3 hover:bg-gray-100 flex transition-transform duration-1000 my-2">
                     <img
                       className="w-6 mr-3"
                       src={searchIcon}
@@ -72,12 +69,12 @@ const Header = () => {
                     />
                     {searchList}
                   </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </Link>
-        <Link to="/results">
+                </Link>
+              ))}
+            </ul>
+          </div>
+        )}
+        <Link to="/result">
           <div className="rounded-r-full bg-gray-100 h-full w-[70px] border-l-0 border border-gray-300 p-[5px] cursor-pointer">
             <div className=" w-7 m-auto">
               <img className="w-full" src={searchIcon} alt="searchIcon" />

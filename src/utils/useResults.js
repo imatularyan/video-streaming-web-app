@@ -21,7 +21,7 @@ const useResults = (searchQuery) => {
     );
     if (response.status >= 200 && response.status <= 299) {
       const jsonData = await response.json();
-      setSearchData(jsonData);
+      setSearchData(jsonData.items);
     } else {
       setSearchData(response.status);
       console.clear();

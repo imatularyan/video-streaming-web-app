@@ -2,11 +2,11 @@ import useResults from "../utils/useResults";
 // import { Link } from "react-router-dom";
 import Error from "./Error";
 
-const ResultsPage = () => {
+const ResultPage = () => {
   const videoResults = useResults();
   console.log(videoResults);
 
-  return videoResults >= "200" ? (
+  return !videoResults?.length ? (
     <Error
       statusCode={videoResults}
       errorMessage={
@@ -18,4 +18,4 @@ const ResultsPage = () => {
   );
 };
 
-export default ResultsPage;
+export default ResultPage;
