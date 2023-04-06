@@ -14,7 +14,7 @@ import useSuggestions from "../utils/useSuggestions";
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
-  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [showSuggestions, setShowSuggestions] = useState(true);
   const dispatch = useDispatch();
   useResults(searchQuery);
   useSuggestions(searchQuery, setSuggestions);
@@ -44,35 +44,27 @@ const Header = () => {
           type="text"
           name="search"
           placeholder="Search"
-          className=" w-full outline-none rounded-l-full px-4 border border-gray-300 focus:border-blue-800 z-10 shadow-inner"
+          className="relative w-full outline-none rounded-l-full px-4 border border-gray-300 focus:border-blue-800 z-10 shadow-inner"
           onChange={(e) => setSearchQuery(e.target.value)}
           onFocus={() => setShowSuggestions(true)}
-          onBlur={() => {
-            setShowSuggestions(false);
-          }}
         />
 
         {showSuggestions && (
-          <div
-            className={
-              "absolute w-[535px] top-12 h-fit rounded-xl z-50 shadow-lg border-gray-300 border-l border-r bg-white "
-            }
+          <ul
+            className="absolute w-[535px] top-12 h-fit rounded-xl z-50 shadow-lg border-gray-300 border-l border-r bg-white"
+            onBlur={() => {
+              setShowSuggestions(false);
+            }}
           >
-            <ul>
-              {suggestions.map((searchList) => (
-                <Link to="/results" key={searchList}>
-                  <li className="py-2 px-3 hover:bg-gray-100 flex transition-transform duration-1000 my-2">
-                    <img
-                      className="w-6 mr-3"
-                      src={searchIcon}
-                      alt="searchIcon"
-                    />
-                    {searchList}
-                  </li>
-                </Link>
-              ))}
-            </ul>
-          </div>
+            {suggestions.map((searchList) => (
+              <Link to="/result" key={searchList}>
+                <li className="py-2 px-3 hover:bg-gray-100 flex transition-transform duration-1000 my-2">
+                  <img className="w-6 mr-3" src={searchIcon} alt="searchIcon" />
+                  {searchList}
+                </li>
+              </Link>
+            ))}
+          </ul>
         )}
         <Link to="/result">
           <div className="rounded-r-full bg-gray-100 h-full w-[70px] border-l-0 border border-gray-300 p-[5px] cursor-pointer">

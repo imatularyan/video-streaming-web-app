@@ -8,6 +8,7 @@ import MainContainer from "./components/MainContainer";
 import WatchPage from "./components/WatchPage";
 import ResultPage from "./components/ResultPage";
 import Error from "./components/Error";
+import VideoContainer from "./components/VideoContainer";
 
 const App = () => {
   return (
@@ -27,14 +28,20 @@ export const appRouter = createBrowserRouter([
       {
         path: "/",
         element: <MainContainer />,
+        children: [
+          {
+            path: "",
+            element: <VideoContainer />,
+          },
+          {
+            path: "result",
+            element: <ResultPage />,
+          },
+        ],
       },
       {
         path: "/watch",
         element: <WatchPage />,
-      },
-      {
-        path: "/result",
-        element: <ResultPage />,
       },
     ],
   },
