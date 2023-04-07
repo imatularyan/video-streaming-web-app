@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Logo from "../assets/Logo.webp";
 import toogleicon from "../assets/hamburger.svg";
 import searchIcon from "../assets/searchIcon.svg";
@@ -15,17 +15,46 @@ const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(true);
+  const [showUser, setShowUser] = useState(false);
+  const [showNotification, setShowNotificaton] = useState(false);
+  const [showLive, setShowLive] = useState(false);
+
   const dispatch = useDispatch();
   useResults(searchQuery);
   useSuggestions(searchQuery, setSuggestions);
+
+  const userMenu = useRef();
+  const imgUserMenu = useRef();
+  const notification = useRef();
+  const imgNotification = useRef();
+  const live = useRef();
+  const imgLive = useRef();
+
+  useEffect(() => {
+    let handler = (e) => {
+      if (e.target !== userMenu.current && e.target !== imgUserMenu.current) {
+        setShowUser(false);
+      }
+      if (
+        e.target !== notification.current &&
+        e.target !== imgNotification.current
+      ) {
+        setShowNotificaton(false);
+      }
+      if (e.target !== live.current && e.target !== imgLive.current) {
+        setShowLive(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+  }, []);
 
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
   };
 
   return (
-    <div className="flex gap-7 items-center font-light h-14 px-4">
-      <div className="flex px-3 gap-6">
+    <div className="flex gap-7 items-center font-light h-14 px-7">
+      <div className="flex gap-6">
         <div className=" w-[19px] cursor-pointer">
           <img
             src={toogleicon}
@@ -74,16 +103,82 @@ const Header = () => {
           </div>
         </Link>
       </div>
-      <div className="flex gap-3 items-center justify-center">
+      <div className="flex gap-5 items-center justify-center">
         <div className=" w-8 p-1 cursor-pointer rounded-full hover:bg-gray-100">
-          <img className="w-6" src={videoCam} alt="userIcon" />
+          <img
+            ref={imgLive}
+            className="w-6"
+            onClick={() =>
+              !showLive
+                ? (setShowLive(true),
+                  setShowNotificaton(false),
+                  setShowUser(false))
+                : setShowLive(false)
+            }
+            src={videoCam}
+            alt="userIcon"
+          />
         </div>
-        <div className=" w-8 p-1 cursor-pointer rounded-full hover:bg-gray-100">
-          <img className="w-6" src={bell} alt="userIcon" />
+        {showLive && (
+          <span
+            ref={live}
+            className="p-3 leading-loose text-sm absolute h-fit w-36 z-50 bg-gray-300 backdrop-blur-lg right-5 top-11 rounded-xl filter backdrop:blur-3xl"
+          >
+            <ul>
+              <Link to="#">
+                <li onClick={() => setShowLive(false)}>Upload video</li>
+              </Link>
+              <Link to="#">
+                <li>Go live</li>
+              </Link>
+              <Link to="#">
+                <li>Create post</li>
+              </Link>
+            </ul>
+          </span>
+        )}
+        <div className=" relative w-8 p-1 cursor-pointer rounded-full hover:bg-gray-100">
+          <img
+            ref={imgNotification}
+            className="w-6"
+            onClick={() =>
+              !showNotification
+                ? (setShowNotificaton(true),
+                  setShowLive(false),
+                  setShowUser(false))
+                : setShowNotificaton(false)
+            }
+            src={bell}
+            alt="userIcon"
+          />
         </div>
-        <div className=" w-8 cursor-pointer">
-          <img className="w-full rounded-full" src={userIcon} alt="userIcon" />
+        {showNotification && (
+          <span
+            ref={notification}
+            className=" absolute h-[400px] w-80 z-50 bg-gray-300 backdrop-blur-lg right-16 top-11 rounded-xl filter backdrop:blur-3xl"
+          ></span>
+        )}
+        <div className=" relative w-7 cursor-pointer">
+          <img
+            ref={imgUserMenu}
+            className="w-full rounded-full"
+            onClick={() =>
+              !showUser
+                ? (setShowUser(true),
+                  setShowLive(false),
+                  setShowNotificaton(false))
+                : setShowUser(false)
+            }
+            src={userIcon}
+            alt="userIcon"
+          />
         </div>
+        {showUser && (
+          <span
+            ref={userMenu}
+            className=" absolute h-[600px] w-80 z-50 bg-gray-300 backdrop-blur-lg right-5 top-11 rounded-xl filter backdrop:blur-3xl"
+          ></span>
+        )}
       </div>
     </div>
   );

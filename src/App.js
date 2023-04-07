@@ -23,7 +23,9 @@ export const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <Body />,
-    errorElement: <Error />,
+    errorElement: (
+      <Error statusCode={404} urlError={"Oops! Something went wrong."} />
+    ),
     children: [
       {
         path: "/",
