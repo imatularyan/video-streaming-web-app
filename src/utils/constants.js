@@ -1,4 +1,4 @@
-export const GOOGLE_API_KEY = "AIzaSyDo7JQY5WfWC1kredar27izONSZV_1qmy0";
+export const GOOGLE_API_KEY = "AIzaSyBpXOktS9jbh_fJbXbU-xET6vB3FQpsaFk";
 
 export const LIVE_CHAT_COUNT = 25;
 
@@ -8,9 +8,6 @@ export const YOUTUBE_VIDEOS_API =
 
 export const YOUTUBE_SEARCH_API =
   "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
-
-// export const YOUTUBE_SEARCH_RESULT =
-//   "https://youtube.googleapis.com/youtube/v3/search?";
 
 export const YOUTUBE_SEARCH_RESULT =
   "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&type=video&regionCode=IN&key=" +

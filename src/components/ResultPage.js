@@ -1,12 +1,10 @@
 import useResults from "../utils/useResults";
 import Error from "./Error";
 import ResultCard from "./ResultCard";
-import { Link } from "react-router-dom";
 
 const ResultPage = () => {
   const videoResults = useResults();
   console.log("videoresults", videoResults);
-  console.log("videoresults", videoResults[0]?.id?.videoId);
 
   return !videoResults?.length ? (
     <Error
@@ -16,12 +14,10 @@ const ResultPage = () => {
       }
     />
   ) : (
-    <div className=" w-full h-screen font-roboto">
-      <div className="flex flex-wrap flex-col w-full gap-4 justify-center ">
-        {videoResults?.map((video, index) => (
-          <Link to={"/watch?v=" + video?.id?.videoId} key={index}>
-            <ResultCard result={video} />
-          </Link>
+    <div className=" w-full h-screen font-roboto p-5">
+      <div className="w-10/12 h-max">
+        {videoResults?.map((video) => (
+          <ResultCard key={video?.id?.videoId} result={video} />
         ))}
       </div>
     </div>

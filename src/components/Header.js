@@ -14,7 +14,7 @@ import useSuggestions from "../utils/useSuggestions";
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
-  const [showSuggestions, setShowSuggestions] = useState(true);
+  const [showSuggestions, setShowSuggestions] = useState(false);
   const [showUser, setShowUser] = useState(false);
   const [showNotification, setShowNotificaton] = useState(false);
   const [showLive, setShowLive] = useState(false);
@@ -76,18 +76,19 @@ const Header = () => {
           className="relative w-full outline-none rounded-l-full px-4 border border-gray-300 focus:border-blue-800 z-10 shadow-inner"
           onChange={(e) => setSearchQuery(e.target.value)}
           onFocus={() => setShowSuggestions(true)}
+          onBlur={() => setShowSuggestions(false)}
         />
 
         {showSuggestions && (
           <ul
-            className="absolute w-[535px] top-12 h-fit rounded-xl z-50 shadow-lg border-gray-300 border-l border-r bg-white"
+            className="transition delay-150 duration-300 ease-in-out absolute w-[530px] top-[52px] h-fit rounded-xl z-50 shadow-md bg-white"
             onBlur={() => {
               setShowSuggestions(false);
             }}
           >
-            {suggestions.map((searchList) => (
+            {suggestions?.map((searchList) => (
               <Link to="/result" key={searchList}>
-                <li className="py-2 px-3 hover:bg-gray-100 flex transition-transform duration-1000 my-2">
+                <li className="py-1 px-3 my-1 hover:bg-gray-200 flex transition-transform duration-1000 font-roboto">
                   <img className="w-6 mr-3" src={searchIcon} alt="searchIcon" />
                   {searchList}
                 </li>
@@ -103,11 +104,11 @@ const Header = () => {
           </div>
         </Link>
       </div>
-      <div className="flex gap-5 items-center justify-center">
-        <div className=" w-8 p-1 cursor-pointer rounded-full hover:bg-gray-100">
+      <div className="flex gap-4 items-center justify-center">
+        <div className="p-2 cursor-pointer rounded-full hover:bg-gray-200">
           <img
             ref={imgLive}
-            className="w-6"
+            className="w-5"
             onClick={() =>
               !showLive
                 ? (setShowLive(true),
@@ -122,25 +123,25 @@ const Header = () => {
         {showLive && (
           <span
             ref={live}
-            className="p-3 leading-loose text-sm absolute h-fit w-36 z-50 bg-gray-300 backdrop-blur-lg right-5 top-11 rounded-xl filter backdrop:blur-3xl"
+            className="p-3 leading-loose text-sm absolute h-fit w-36 z-50 bg-gray-200 backdrop-blur-lg right-5 top-12 rounded-xl filter backdrop:blur-3xl"
           >
             <ul>
-              <Link to="#">
+              <Link to="">
                 <li onClick={() => setShowLive(false)}>Upload video</li>
               </Link>
-              <Link to="#">
+              <Link to="">
                 <li>Go live</li>
               </Link>
-              <Link to="#">
+              <Link to="">
                 <li>Create post</li>
               </Link>
             </ul>
           </span>
         )}
-        <div className=" relative w-8 p-1 cursor-pointer rounded-full hover:bg-gray-100">
+        <div className=" relative p-2 cursor-pointer rounded-full hover:bg-gray-200">
           <img
             ref={imgNotification}
-            className="w-6"
+            className="w-5"
             onClick={() =>
               !showNotification
                 ? (setShowNotificaton(true),
@@ -155,13 +156,13 @@ const Header = () => {
         {showNotification && (
           <span
             ref={notification}
-            className=" absolute h-[400px] w-80 z-50 bg-gray-300 backdrop-blur-lg right-16 top-11 rounded-xl filter backdrop:blur-3xl"
+            className=" absolute h-[400px] w-80 z-50 bg-gray-200 backdrop-blur-lg right-16 top-12 rounded-xl filter backdrop:blur-3xl"
           ></span>
         )}
-        <div className=" relative w-7 cursor-pointer">
+        <div className=" relative cursor-pointer">
           <img
             ref={imgUserMenu}
-            className="w-full rounded-full"
+            className="w-7 rounded-full hover:border-[1.5px] hover:border-blue-400 transition delay-75 duration-150 ease-in-out "
             onClick={() =>
               !showUser
                 ? (setShowUser(true),
@@ -176,7 +177,7 @@ const Header = () => {
         {showUser && (
           <span
             ref={userMenu}
-            className=" absolute h-[600px] w-80 z-50 bg-gray-300 backdrop-blur-lg right-5 top-11 rounded-xl filter backdrop:blur-3xl"
+            className=" absolute h-[600px] w-80 z-50 bg-gray-200 backdrop-blur-lg right-5 top-12 rounded-xl filter backdrop:blur-3xl"
           ></span>
         )}
       </div>

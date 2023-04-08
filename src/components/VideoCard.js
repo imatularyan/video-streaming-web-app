@@ -7,10 +7,10 @@ const VideoCard = ({ info }) => {
 
   return (
     <div className="text-[#0f0f0f] my-2 cursor-pointer 2xl:w-64 xl:w-[23rem] md:w-44 sm:w-full">
-      <div className="xl:w-[22rem] xl:h-44 2xl:h-36 md:w-44 md:h-24 sm:w-full sm:h-[400px]">
+      <div className="xl:w-[359px] xl:h-[202px] 2xl:h-36 md:w-44 md:h-24 sm:w-full sm:h-[400px]">
         <img
           className=" w-full h-full rounded-xl object-cover"
-          src={thumbnails.high.url}
+          src={thumbnails?.high?.url}
           alt="thumbnail"
         />
       </div>
