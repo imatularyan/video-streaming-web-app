@@ -7,12 +7,9 @@ import { Link } from "react-router-dom";
 
 const ButtonList = () => {
   const [scroll, setScroll] = useState(false);
-  const [filterBtn, setFilterBtn] = useState("");
+  // const [filterBtn, setFilterBtn] = useState("");
   const categories = useCategories();
-
-  const filterData = useFilter(filterBtn);
-  // console.log("filtered data: ", filterData);
-
+  const [setFilterBtn] = useFilter();
   return (
     <>
       <span
@@ -34,7 +31,7 @@ const ButtonList = () => {
             <li
               key={categories?.id}
               className=" my-3 mr-3 px-3 h-8 min-w-[12px] bg-stone-100 rounded-lg hover:bg-gray-300 "
-              onClick={() => setFilterBtn(categories.id)}
+              onClick={() => setFilterBtn(categories?.id)}
             >
               {categories?.snippet?.title}
             </li>

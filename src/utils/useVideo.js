@@ -9,7 +9,7 @@ const useVideo = () => {
     console.clear();
   }, []);
 
-  const getVideos = async () => {
+  const getVideos = async (e) => {
     const response = await fetch(YOUTUBE_VIDEOS_API);
     if (response.status >= 200 && response.status <= 299) {
       const json = await response.json();
@@ -17,6 +17,7 @@ const useVideo = () => {
     } else {
       // Handle errors
       setVideoData(response.status);
+      e.preventDefault();
       console.clear();
     }
   };
