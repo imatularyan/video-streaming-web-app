@@ -25,8 +25,4 @@ const VideoCard = ({ info }) => {
   );
 };
 
-export const AdvideoCard = ({ info }) => {
-  return <VideoCard info={info} />;
-};
-
 export default VideoCard;

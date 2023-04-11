@@ -7,9 +7,11 @@ import { Link } from "react-router-dom";
 
 const ButtonList = () => {
   const [scroll, setScroll] = useState(false);
-  // const [filterBtn, setFilterBtn] = useState("");
+  const [filterBtn, setFilterBtn] = useState("");
   const categories = useCategories();
-  const [setFilterBtn] = useFilter();
+  const filterData = useFilter(filterBtn);
+  // console.log(filterData);
+
   return (
     <>
       <span

@@ -6,8 +6,8 @@ import useFilter from "../utils/useFilter";
 
 const VideoContainer = () => {
   const videoData = useVideo();
-  const [filterData, filterBtn] = useFilter();
-  console.log(filterData, filterBtn);
+  const filterData = useFilter();
+  console.log(filterData);
 
   return (
     <>
