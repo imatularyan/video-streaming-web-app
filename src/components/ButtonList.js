@@ -1,16 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useCategories from "../utils/useCategories";
 import arrowLeft from "../assets/arrowLeft.svg";
 import arrowRight from "../assets/arrowRight.svg";
-import useFilter from "../utils/useFilter";
 import { Link } from "react-router-dom";
+import { YOUTUBE_VIDEOS_API } from "../utils/constants";
 
 const ButtonList = () => {
   const [scroll, setScroll] = useState(false);
-  const [filterBtn, setFilterBtn] = useState("");
+  const [category, setFilterCategory] = useState(" ");
+  const [filterData, setFilterData] = useState([]);
   const categories = useCategories();
-  const filterData = useFilter(filterBtn);
-  // console.log(filterData);
+
+  useEffect(() => {
+    if (filterData) {
+      filterCategory();
+      console.clear();
+    }
+  }, [category]);
+
+  const filterCategory = async () => {
+    const res = await fetch(
+      `${YOUTUBE_VIDEOS_API}&videoCategoryId=${category}`
+    );
+    if (res.status >= 200 || res.status <= 299) {
+      const json = await res.json();
+      setFilterData(json?.items);
+    } else {
+      console.clear();
+    }
+  };
+
+  console.log("filtered data", filterData);
 
   return (
     <>
@@ -33,7 +53,7 @@ const ButtonList = () => {
             <li
               key={categories?.id}
               className=" my-3 mr-3 px-3 h-8 min-w-[12px] bg-stone-100 rounded-lg hover:bg-gray-300 "
-              onClick={() => setFilterBtn(categories?.id)}
+              onClick={() => setFilterCategory(categories?.id)}
             >
               {categories?.snippet?.title}
             </li>

@@ -2,6 +2,7 @@ import React from "react";
 import Error from "./Error";
 import useVideo from "../utils/useVideo";
 import { Outlet } from "react-router-dom";
+import ButtonList from "./ButtonList";
 
 const MainContainer = () => {
   const videoData = useVideo();
@@ -15,6 +16,7 @@ const MainContainer = () => {
     />
   ) : (
     <div className="flex flex-col px-2 w-10/12 justify-center mx-auto">
+      <ButtonList />
       <Outlet />
     </div>
   );
