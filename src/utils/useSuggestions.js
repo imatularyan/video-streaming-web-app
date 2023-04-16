@@ -27,6 +27,7 @@ const useSuggestions = (query, setQuery) => {
     const response = await fetch(YOUTUBE_SEARCH_API + query);
     if (response.status >= 200 && response.status <= 299) {
       const json = await response?.json();
+      console.log(json);
       setQuery(json[1]);
       dispatch(
         cacheResults({

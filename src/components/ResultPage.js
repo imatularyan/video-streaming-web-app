@@ -15,7 +15,7 @@ const ResultPage = () => {
     />
   ) : (
     <div className=" w-full h-screen font-roboto p-5">
-      <div className="w-10/12 h-max">
+      <div className="h-max">
         {videoResults?.map((video) => (
           <ResultCard key={video?.id?.videoId} result={video} />
         ))}
