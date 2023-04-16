@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
 import { YOUTUBE_SEARCH_RESULT } from "./constants";
 
-const useResults = (searchQuery) => {
+const useResults = (query) => {
   const [searchData, setSearchData] = useState([]);
+  console.log(typeof query);
 
-  console.log(searchQuery);
   useEffect(() => {
     getSearchData();
     console.clear();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchQuery]);
+  }, [query]);
 
   const getSearchData = async () => {
-    const response = await fetch(`${YOUTUBE_SEARCH_RESULT}${searchQuery}`);
+    const response = await fetch(`${YOUTUBE_SEARCH_RESULT}${query}`);
     if (response.status >= 200 && response.status <= 299) {
       const jsonData = await response?.json();
       setSearchData(jsonData?.items);

@@ -12,7 +12,7 @@ import useResults from "../utils/useResults";
 import useSuggestions from "../utils/useSuggestions";
 
 const Header = () => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchText, setSearchText] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [showUser, setShowUser] = useState(false);
@@ -20,8 +20,9 @@ const Header = () => {
   const [showLive, setShowLive] = useState(false);
 
   const dispatch = useDispatch();
-  useResults(searchQuery);
-  useSuggestions(searchQuery, setSuggestions);
+  const query = useSuggestions(searchText, setSuggestions);
+  console.log(query);
+  useResults(query);
 
   const userMenu = useRef();
   const imgUserMenu = useRef();
@@ -74,7 +75,7 @@ const Header = () => {
           name="search"
           placeholder="Search"
           className="relative w-full outline-none rounded-l-full px-4 border border-gray-300 focus:border-blue-800 z-10 shadow-inner"
-          onChange={(e) => setSearchQuery(e.target.value)}
+          onChange={(e) => setSearchText(e.target.value)}
           onFocus={() => setShowSuggestions(true)}
           onBlur={() => setShowSuggestions(false)}
         />
