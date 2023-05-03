@@ -6,22 +6,23 @@ const useVideo = () => {
 
   useEffect(() => {
     getVideos();
-    console.clear();
   }, []);
 
   const getVideos = async () => {
-    const response = await fetch(YOUTUBE_VIDEOS_API);
-    if (response.status >= 200 && response.status <= 299) {
-      const json = await response.json();
-      setVideoData(json?.items);
-    } else {
-      // Handle errors
-      setVideoData(response.status);
-      console.clear();
+    try {
+      const response = await fetch(YOUTUBE_VIDEOS_API);
+      if (response.status >= 200 && response.status <= 299) {
+        const json = await response.json();
+        setVideoData(json?.items);
+      } else {
+        setVideoData(response.status);
+        console.clear();
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 
-  //return video data
   return videoData;
 };
 

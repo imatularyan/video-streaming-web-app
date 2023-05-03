@@ -1,4 +1,4 @@
-import VideoCard, { AdvideoCard } from "./VideoCard";
+import VideoCard from "./VideoCard";
 import { Link } from "react-router-dom";
 import useVideo from "../utils/useVideo";
 
@@ -7,8 +7,7 @@ const VideoContainer = () => {
 
   return (
     <>
-      <div className="flex flex-wrap w-full gap-4 justify-center ">
-        {videoData[0] && <AdvideoCard info={videoData[0]} />}
+      <div className="flex flex-wrap ">
         {videoData?.map((video) => (
           <Link to={"/watch?v=" + video?.id} key={video?.id}>
             <VideoCard info={video} />

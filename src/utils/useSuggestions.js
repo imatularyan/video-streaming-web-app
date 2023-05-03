@@ -14,7 +14,6 @@ const useSuggestions = (searchText, setSearchText) => {
       } else {
         getSearchSuggestions();
       }
-      console.clear();
     }, 200);
 
     return () => {
@@ -24,27 +23,28 @@ const useSuggestions = (searchText, setSearchText) => {
   }, [searchText]);
 
   const getSearchSuggestions = async () => {
-    const response = await fetch(YOUTUBE_SEARCH_API + searchText);
-    if (response.status >= 200 && response.status <= 299) {
-      const json = await response?.json();
-      console.log(json);
-      setSearchText(json[1]);
-      dispatch(
-        cacheResults({
-          [searchText]: json[1],
-        })
-      );
-    } else {
-      setSearchText(response.status);
-      dispatch(
-        cacheResults({
-          [searchText]: response.status,
-        })
-      );
-      console.clear();
+    try {
+      const response = await fetch(YOUTUBE_SEARCH_API + searchText);
+      if (response.status >= 200 && response.status <= 299) {
+        const json = await response?.json();
+        setSearchText(json[1]);
+        dispatch(
+          cacheResults({
+            [searchText]: json[1],
+          })
+        );
+      } else {
+        setSearchText(response.status);
+        dispatch(
+          cacheResults({
+            [searchText]: response.status,
+          })
+        );
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
-
   return searchText;
 };
 

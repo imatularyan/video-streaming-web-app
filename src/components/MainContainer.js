@@ -15,7 +15,7 @@ const MainContainer = () => {
       }
     />
   ) : (
-    <div className="flex flex-col px-2 w-10/12 justify-center mx-auto">
+    <div className="container w-5/6">
       <ButtonList />
       <Outlet />
     </div>
